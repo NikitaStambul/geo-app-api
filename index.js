@@ -1,7 +1,7 @@
 import express, { json } from 'express';
 import cors from "cors";
 import dotenv from "dotenv";
-import { createTag, getAll, getById } from "./services/geoTags.js";
+import { createTag, getAll, getById } from "./src/services/geoTags.js";
 
 dotenv.config();
 
