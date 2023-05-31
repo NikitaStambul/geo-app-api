@@ -7,7 +7,10 @@ const { DB_URL } = process.env;
 
 console.log({DB_URL});
 
-export const sequelize = new Sequelize(DB_URL);
+export const sequelize = new Sequelize(DB_URL, {
+  dialect: 'postgres'
+});
+
 
 try {
   await sequelize.authenticate();
@@ -15,3 +18,5 @@ try {
 } catch (error) {
   console.error('Unable to connect to the database:', error);
 };
+
+sequelize.sync({ alter: true });
