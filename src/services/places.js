@@ -10,5 +10,5 @@ export function getById(tagId) {
 
 export function createTag(tag) {
   const { name, description, latitude, longitude } = tag;
-  return Place.create({ name, description, latitude, longitude })
+  return Place.create({ name, description, latitude, longitude });
 }

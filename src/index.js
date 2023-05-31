@@ -1,7 +1,7 @@
 import express, { json } from 'express';
-import cors from "cors";
-import dotenv from "dotenv";
-import { createTag, getAll, getById } from "./services/places.js";
+import cors from 'cors';
+import dotenv from 'dotenv';
+import { createTag, getAll, getById } from './services/places.js';
 
 dotenv.config();
 
@@ -10,22 +10,22 @@ const port = process.env.PORT || 3000;
 
 app.use(cors());
 
-app.get("/", (req, res) => {
-  res.send('<h1>Welcome to Gis App Api</h1>')
-})
+app.get('/', (req, res) => {
+  res.send('<h1>Welcome to Gis App Api</h1>');
+});
 
-app.get("/places", async (req, res) => {
+app.get('/places', async (req, res) => {
   const places = await getAll();
   res.send(places);
 });
 
-app.get("/places/:placeId", async (req, res) => {
+app.get('/places/:placeId', async (req, res) => {
   const { placeId } = req.params;
   const place = await getById(placeId);
   res.send(place);
 });
 
-app.post("/places", json(), async (req, res) => {
+app.post('/places', json(), async (req, res) => {
   console.log(req.body);
   const place = createTag(req.body);
   res.send(place);
