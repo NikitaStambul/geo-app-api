@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
 import { sequelize } from '../utils/db.js';
 
-export const GeoTag = sequelize.define('GeoTag', {
+export const Place = sequelize.define('Place', {
   id: {
     type: DataTypes.UUID,
     defaultValue: DataTypes.UUIDV4,
@@ -24,5 +24,5 @@ export const GeoTag = sequelize.define('GeoTag', {
     allowNull: false,
   }
 }, {
-  tableName: 'geoTags',
+  tableName: 'places',
 })

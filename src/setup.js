@@ -1,3 +1,3 @@
-import { GeoTag } from './models/GeoTag.js';
+import { Place } from './models/Place.js';
 
-GeoTag.sync({ force: true });
+Place.sync({ force: true });

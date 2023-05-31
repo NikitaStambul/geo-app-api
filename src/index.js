@@ -1,7 +1,7 @@
 import express, { json } from 'express';
 import cors from "cors";
 import dotenv from "dotenv";
-import { createTag, getAll, getById } from "./services/geoTags.js";
+import { createTag, getAll, getById } from "./services/places.js";
 
 dotenv.config();
 
@@ -14,20 +14,21 @@ app.get("/", (req, res) => {
   res.send('<h1>Welcome to Gis App Api</h1>')
 })
 
-app.get("./geoTags", async (req, res) => {
-  const tags = await getAll();
-  res.send(tags);
+app.get("/places", async (req, res) => {
+  const places = await getAll();
+  res.send(places);
 });
 
-app.get("./geoTags/:tagId", async (req, res) => {
-  const { tagId } = req.params;
-  const tag = await getById(tagId);
-  res.send(tag);
+app.get("/places/:placeId", async (req, res) => {
+  const { placeId } = req.params;
+  const place = await getById(placeId);
+  res.send(place);
 });
 
-app.post("./geoTags", json(), async (req, res) => {
-  const tag = createTag(req.body);
-  res.send(tag);
+app.post("/places", json(), async (req, res) => {
+  console.log(req.body);
+  const place = createTag(req.body);
+  res.send(place);
 });
 
 app.listen(port, () => {
