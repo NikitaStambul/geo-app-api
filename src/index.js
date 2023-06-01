@@ -1,7 +1,7 @@
 import express, { json } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import { createTag, getAll, getById } from './services/places.js';
+import { createTag, getAll, getById, removeTag } from './services/places.js';
 
 dotenv.config();
 
@@ -26,9 +26,14 @@ app.get('/places/:placeId', async (req, res) => {
 });
 
 app.post('/places', json(), async (req, res) => {
-  console.log(req.body);
   const place = createTag(req.body);
   res.send(place);
+});
+
+app.delete('/places/:placeId', async (req, res) => {
+  const { placeId } = req.params;
+  await removeTag(placeId);
+  res.sendStatus(200);
 });
 
 app.listen(port, () => {

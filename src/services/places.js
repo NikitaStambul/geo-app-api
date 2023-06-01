@@ -12,3 +12,11 @@ export function createTag(tag) {
   const { name, description, latitude, longitude } = tag;
   return Place.create({ name, description, latitude, longitude });
 }
+
+export function removeTag(tagId) {
+  return Place.destroy({
+    where: {
+      id: tagId
+    }
+  })
+};
