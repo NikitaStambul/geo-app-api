@@ -33,7 +33,7 @@ app.post('/places', json(), async (req, res) => {
 app.delete('/places/:placeId', async (req, res) => {
   const { placeId } = req.params;
   await removeTag(placeId);
-  res.sendStatus(200);
+  res.sendStatus(204);
 });
 
 app.listen(port, () => {
